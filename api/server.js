@@ -1,4 +1,5 @@
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
@@ -19,6 +20,7 @@ mongoose.set("strictQuery", true);
 connectDB();
 app.use(express.json()); //Used to send users inputs(req.body) from postman
 app.use(cookieParser());
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 /* app.use("/api/gigs", gigRoute);

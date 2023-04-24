@@ -1,7 +1,7 @@
 import React from "react";
+import Slide from "../../components/Slide/Slide";
 import CatCard from "../../components/catCard/CatCard";
 import Featured from "../../components/featured/Featured";
-import Slide from "../../components/Slide/Slide";
 import TrustedBy from "../../components/trustedBy/TrustedBy";
 import check from "../../img/check.png";
 import check2 from "../../img/check2.png";
@@ -48,8 +48,8 @@ const Home = () => {
               Protected payments, every time
             </div>
             <p>
-              Always know what you'll pay upfront. Your payment isn't released
-              until you approve the work.
+              Always know what you will pay upfront. Your payment is not
+              released until you approve the work.
             </p>
             <div className="title">
               <img src={check} alt="" />

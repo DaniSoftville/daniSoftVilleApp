@@ -25,7 +25,8 @@ function Gigs() {
         <span className="breadcrumbs">DaniSoftVille</span>
         <h1>AI Artists</h1>
         <p>
-          Explore the boundaries of art and technology with Liverr's AI artists
+          Explore the boundaries of art and technology with Danisoftville AI
+          artists
         </p>
         <div className="menu">
           <div className="left">
