@@ -8,6 +8,7 @@ import noavatar from "../../img/noavatar.png";
 import recycle from "../../img/recycle-bin.png";
 import star from "../../img/star.png";
 
+import Reviews from "../../components/reviews/Reviews";
 import newRequest from "../../utils/newRequest";
 import "./Gig.scss";
 
@@ -131,7 +132,7 @@ function Gig() {
                 </div>
               </div>
             )}
-            {/*  <Reviews gigId={id} /> */}
+            <Reviews gigId={id} />
           </div>
           <div className="right">
             <div className="price">
