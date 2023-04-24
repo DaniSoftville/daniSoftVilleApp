@@ -1,6 +1,9 @@
-import React, { useRef, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import GigCard from "../../components/gigCard/GigCard";
-import { gigs } from "../../data";
+import upDown from "../../img/up-and-down.png";
+import newRequest from "../../utils/newRequest";
 import "./Gigs.scss";
 
 function Gigs() {
@@ -9,24 +12,41 @@ function Gigs() {
   const minRef = useRef();
   const maxRef = useRef();
 
+  const { search } = useLocation();
+
+  const { isLoading, error, data, refetch } = useQuery({
+    queryKey: ["gigs"],
+    queryFn: () =>
+      newRequest
+        .get(
+          `/gigs${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
+        )
+        .then((res) => {
+          return res.data;
+        }),
+  });
+
+  console.log(data);
+
   const reSort = (type) => {
     setSort(type);
     setOpen(false);
   };
 
-  const apply = () => {
-    console.log(minRef.current.value);
-    console.log(maxRef.current.value);
-  };
+  useEffect(() => {
+    refetch();
+  }, [sort]);
 
+  const apply = () => {
+    refetch();
+  };
   return (
     <div className="gigs">
       <div className="container">
         <span className="breadcrumbs">DaniSoftVille</span>
         <h1>AI Artists</h1>
         <p>
-          Explore the boundaries of art and technology with Danisoftville AI
-          artists
+          Explore the boundaries of art and technology with Dani AI projects
         </p>
         <div className="menu">
           <div className="left">
@@ -40,7 +60,7 @@ function Gigs() {
             <span className="sortType">
               {sort === "sales" ? "Best Selling" : "Newest"}
             </span>
-            <img src="./img/down.png" alt="" onClick={() => setOpen(!open)} />
+            <img src={upDown} alt="" onClick={() => setOpen(!open)} />
             {open && (
               <div className="rightMenu">
                 {sort === "sales" ? (
@@ -54,9 +74,11 @@ function Gigs() {
           </div>
         </div>
         <div className="cards">
-          {gigs.map((gig) => (
-            <GigCard key={gig.id} item={gig} />
-          ))}
+          {isLoading
+            ? "loading"
+            : error
+            ? "Something went wrong!"
+            : data.map((gig) => <GigCard key={gig._id} item={gig} />)}
         </div>
       </div>
     </div>

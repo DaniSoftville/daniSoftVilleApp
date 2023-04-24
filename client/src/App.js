@@ -1,5 +1,6 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./app.scss";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
@@ -15,13 +16,14 @@ import Orders from "./pages/orders/Orders";
 import Register from "./pages/register/Register";
 
 function App() {
+  const queryClient = new QueryClient();
   const Layout = () => {
     return (
-      <div className="app">
+      <QueryClientProvider client={queryClient}>
         <Navbar />
         <Outlet />
         <Footer />
-      </div>
+      </QueryClientProvider>
     );
   };
 

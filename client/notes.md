@@ -1,0 +1,1 @@
+Gig: "a job, especially one that is temporary or freelance and performed on an informal or on-demand basis. a job, especially one that is temporary or freelance and performed on an informal or on-demand basis".
