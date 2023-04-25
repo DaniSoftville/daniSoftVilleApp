@@ -13,7 +13,9 @@ import Message from "./pages/message/Message";
 import Messages from "./pages/messages/Messages";
 import MyGigs from "./pages/myGigs/MyGigs";
 import Orders from "./pages/orders/Orders";
+import Pay from "./pages/pay/Pay";
 import Register from "./pages/register/Register";
+import Success from "./pages/success/Success";
 
 function App() {
   const queryClient = new QueryClient();
@@ -64,18 +66,25 @@ function App() {
           path: "/gig/:id",
           element: <Gig />,
         },
+        {
+          path: "/register",
+          element: <Register />,
+        },
+        {
+          path: "/login",
+          element: <Login />,
+        },
+        {
+          path: "/pay/:id",
+          element: <Pay />,
+        },
+        {
+          path: "/success",
+          element: <Success />,
+        },
       ],
     },
-    {
-      path: "/register",
-      element: <Register />,
-    },
-    {
-      path: "/login",
-      element: <Login />,
-    },
   ]);
-
   return <RouterProvider router={router} />;
 }
 

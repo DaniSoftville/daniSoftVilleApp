@@ -18,6 +18,7 @@ const app = express();
 dotenv.config();
 mongoose.set("strictQuery", true);
 connectDB();
+app.use(express.static("public"));
 app.use(express.json()); //Used to send users inputs(req.body) from postman
 app.use(cookieParser());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
